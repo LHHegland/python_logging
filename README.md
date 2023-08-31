@@ -85,7 +85,7 @@ None
 
 1. Review [README.md](#table-of-contents).
 1. Complete [installation](#installation).
-1. Review [sample log](https://github.com/LHHegland/python_logging/blob/main/logs/) and code in modules, especially [utils\logz.py](https://github.com/LHHegland/python_logging/blob/main/utils/logz.py), [test.py](https://github.com/LHHegland/python_logging/blob/main/test.py), and a few [pkg_*\mdl_*.py](https://github.com/LHHegland/python_logging/tree/main/pkg_b).
+1. Review [sample log](https://github.com/LHHegland/python_logging/blob/main/logs/) and code in modules, especially [utils\logz.py](https://github.com/LHHegland/python_logging/blob/main/utils/logz.py), [test.py](https://github.com/LHHegland/python_logging/blob/main/test.py), and a few [pkg_x\mdl_x.py](https://github.com/LHHegland/python_logging/tree/main/pkg_b).
 1. Experiment with utils\logs.py 
    1. Execute `py test.py`
    1. Review `logs\test-[timestamp].log`
@@ -96,8 +96,6 @@ None
 .
 
 ## **Contributors**
-
-TODO: Identify contributors.
 
 - **Lance Hegland ([lance.hegland@civic-innovations.com](mailto:lance.hegland@civic-innovations.com))**
 
