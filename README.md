@@ -23,7 +23,7 @@
 
 ## **Features**
 
-Example of Python logging includes
+[Example of Python logging](https://github.com/LHHegland/python_logging/blob/main/logs/), including the following:
 - single reusable and easily importable module for logging
 - quick and easy to scan logging output
    - examples of color-coding for ease of log scanning
@@ -85,12 +85,12 @@ None
 
 1. Review [README.md](#table-of-contents).
 1. Complete [installation](#installation).
-1. Review code in modules, especially utils\logz.py, test.py, and a few pkg_*\mdl_*.py.
+1. Review [sample log](https://github.com/LHHegland/python_logging/blob/main/logs/) and code in modules, especially [utils\logz.py](https://github.com/LHHegland/python_logging/blob/main/utils/logz.py), [test.py](https://github.com/LHHegland/python_logging/blob/main/test.py), and a few [pkg_*\mdl_*.py](https://github.com/LHHegland/python_logging/tree/main/pkg_b).
 1. Experiment with utils\logs.py 
    1. Execute `py test.py`
    1. Review `logs\test-[timestamp].log`
-1. Experiment with utils\logs.py
-   1. Execute `py utils\logs.py --help`
+1. Experiment with utils\logz.py
+   1. Execute `py utils\logz.py --help`
    1. Review on-screen results
 
 .

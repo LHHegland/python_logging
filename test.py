@@ -1,7 +1,7 @@
 import utils.logz
 mylog = utils.logz.init_logfile('logs\\', __file__).getChild('test')
 
-mylog.info('Loading '  + mylog.name + '.')
+mylog.info('⬛ Loading '  + mylog.name + '.')
 
 import mdl_a
 import mdl_b
