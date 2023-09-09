@@ -1,0 +1,98 @@
+
+2023-09-09 16:16:20 -0500 - root - ⬛ INFO: 
+OPERATING SYSTEM: uname_result(system='Windows', node='DESKTOP-2V17ULL', release='10', version='10.0.19045', machine='AMD64')
+PYTHON VERSION:: 3.11.4
+FILE: d:\Data\PRECISA\Clients\CivicInnovations\Projects\hegland-lance\python_logging\test.py
+========== STARTING ==========
+
+2023-09-09 16:16:20 -0500 - test - ⬛ INFO: Loading test.
+
+2023-09-09 16:16:20 -0500 - mdl_a - ⬛ INFO: Loading mdl_a.
+
+2023-09-09 16:16:20 -0500 - mdl_b - ⬛ INFO: Loading mdl_b.
+
+2023-09-09 16:16:20 -0500 - mdl_z - ⬛ INFO: Loading mdl_z.
+
+2023-09-09 16:16:20 -0500 - pkg_a.mdl_a - ⬛ INFO: Loading pkg_a.mdl_a.
+
+2023-09-09 16:16:20 -0500 - pkg_a.mdl_b - ⬛ INFO: Loading pkg_a.mdl_b.
+
+2023-09-09 16:16:20 -0500 - pkg_a.mdl_z - ⬛ INFO: Loading pkg_a.mdl_z.
+
+2023-09-09 16:16:20 -0500 - pkg_b.mdl_a - ⬛ INFO: Loading pkg_b.mdl_a.
+
+2023-09-09 16:16:20 -0500 - pkg_b.mdl_b - ⬛ INFO: Loading pkg_b.mdl_b.
+
+2023-09-09 16:16:20 -0500 - pkg_b.mdl_z - ⬛ INFO: Loading pkg_b.mdl_z.
+
+2023-09-09 16:16:20 -0500 - pkg_z.mdl_a - ⬛ INFO: Loading pkg_z.mdl_a.
+
+2023-09-09 16:16:20 -0500 - pkg_z.mdl_b - ⬛ INFO: Loading pkg_z.mdl_b.
+
+2023-09-09 16:16:20 -0500 - pkg_z.mdl_z - ⬛ INFO: Loading pkg_z.mdl_z.
+
+2023-09-09 16:16:20 -0500 - test - ⬛ INFO: Trying Actions…
+
+2023-09-09 16:16:20 -0500 - test - ⬛ INFO: Message
+
+2023-09-09 16:16:20 -0500 - test - ⚪ DEBUG: Message.
+
+🟧 Message. 
+2023-09-09 16:16:20 -0500 - test - WARNING 
+MainThread → MainProcess 
+d:\Data\PRECISA\Clients\CivicInnovations\Projects\hegland-lance\python_logging\test.py 
+→ test → <module> @ 27 
+EXCEPTION INFO: None 
+
+
+🟥 Message. 
+2023-09-09 16:16:20 -0500 - test - ERROR 
+MainThread → MainProcess 
+d:\Data\PRECISA\Clients\CivicInnovations\Projects\hegland-lance\python_logging\test.py 
+→ test → <module> @ 28 
+EXCEPTION INFO: None 
+
+
+🟥🟥 Message. 
+2023-09-09 16:16:20 -0500 - test - CRITICAL 
+MainThread → MainProcess 
+d:\Data\PRECISA\Clients\CivicInnovations\Projects\hegland-lance\python_logging\test.py 
+→ test → <module> @ 29 
+EXCEPTION INFO: None 
+
+
+🟥 Specified Exception Message. 
+2023-09-09 16:16:20 -0500 - test - ERROR 
+MainThread → MainProcess 
+d:\Data\PRECISA\Clients\CivicInnovations\Projects\hegland-lance\python_logging\test.py 
+→ test → <module> @ 30 
+EXCEPTION INFO: (None, None, None) 
+NoneType: None
+
+🟥 🟥 Unspecified Exception Message. 
+2023-09-09 16:16:20 -0500 - test - ERROR 
+MainThread → MainProcess 
+d:\Data\PRECISA\Clients\CivicInnovations\Projects\hegland-lance\python_logging\test.py 
+→ test → <module> @ 31 
+EXCEPTION INFO: (None, None, None) 
+NoneType: None
+
+2023-09-09 16:16:20 -0500 - pkg_z.mdl_a - ⬛ INFO: Hi! I'm pkg_z.mdl_z.var_z! I'm in pkg_z.mdl_a.fnctn_b!
+
+2023-09-09 16:16:20 -0500 - pkg_a.mdl_z - ⬛ INFO: Hi! I'm pkg_b.mdl_a.var_b! I'm in pkg_a.mdl_z.fnctn_a!
+
+2023-09-09 16:16:20 -0500 - pkg_b.mdl_a - ⬛ INFO: Hi! I'm pkg_z.mdl_z.var_z! I'm in pkg_b.mdl_a.fnctn_z!
+
+2023-09-09 16:16:20 -0500 - pkg_a.mdl_z - ⬛ INFO: Hi! I'm mdl_z.var_z! I'm in pkg_a.mdl_z.fnctn_a!
+
+2023-09-09 16:16:20 -0500 - pkg_a.mdl_b - ⬛ INFO: Hi! I'm pkg_z.mdl_a.var_a! I'm in pkg_a.mdl_b.fnctn_a!
+
+2023-09-09 16:16:20 -0500 - mdl_z - ⬛ INFO: Hi! I'm mdl_a.var_b! I'm in mdl_z.fnctn_b!
+
+2023-09-09 16:16:20 -0500 - mdl_z - ⬛ INFO: Hi! I'm pkg_a.mdl_b.var_b! I'm in mdl_z.fnctn_z!
+
+2023-09-09 16:16:20 -0500 - test - ⬛ INFO: 🟩 …Completed Actions.
+
+2023-09-09 16:16:20 -0500 - test - ⬛ INFO: 
+========== ENDING ==========
+FILE: d:\Data\PRECISA\Clients\CivicInnovations\Projects\hegland-lance\python_logging\test.py

@@ -26,7 +26,7 @@
 [Example of Python logging](https://github.com/LHHegland/python_logging/blob/main/logs/), including the following:
 - single reusable and easily importable module for logging
 - quick and easy to scan logging output
-   - examples of color-coding for ease of log scanning
+   - contextual color symbols for log scanning
    - different message formatting based on messaging level: FYI (e.g. debug, info) vs alert (e.g. warning, error, critical, exception)
 - vital information for experimenting and debugging
    - system environmental variables logged when execution initiated
@@ -37,7 +37,7 @@
    - options to output to file or stderr
 - examples to build from
    - sample log messages
-   - message filter function
+   - logging library use with loggers, handlers, formatters, and filters.
    - argparse for command line interface help messaging
 
 .
