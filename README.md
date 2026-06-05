@@ -85,19 +85,16 @@ None
 
 1. Review [README.md](#table-of-contents).
 1. Complete [installation](#installation).
-1. Review [sample log](https://github.com/LHHegland/python_logging/blob/main/logs/) and code in modules, especially [utils\logz.py](https://github.com/LHHegland/python_logging/blob/main/utils/logz.py), [test.py](https://github.com/LHHegland/python_logging/blob/main/test.py), and a few [pkg_x\mdl_x.py](https://github.com/LHHegland/python_logging/tree/main/pkg_b).
-1. Experiment with utils\logs.py 
-   1. Execute `py test.py`
-   1. Review `logs\test-[timestamp].log`
-1. Experiment with utils\logz.py
-   1. Execute `py utils\logz.py --help`
-   1. Review on-screen results
+1. Review [sample log](https://github.com/LHHegland/python_logging/blob/main/src/logs/) and code in modules, especially [src\lib\log\__init__.py](https://github.com/LHHegland/python_logging/blob/main/src/lib/__init__.py), [src\main.py](https://github.com/LHHegland/python_logging/blob/main/src/main.py), and a few [src\lib\pkg_x\mdl_x.py](https://github.com/LHHegland/python_logging/tree/main/src/lib/pkg_b).
+1. Experiment with src\lib\log
+   1. Execute `py src\main.py`
+   1. Review `src\logs\test-[timestamp].log`
 
 .
 
 ## **Contributors**
 
-- **Lance Hegland ([lance.hegland@civic-innovations.com](mailto:lance.hegland@civic-innovations.com))**
+- **Lance Hegland ([lance.hegland@gmail.com](mailto:lance.hegland@gmail.com))**
 
 .
 
