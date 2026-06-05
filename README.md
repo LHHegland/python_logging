@@ -23,7 +23,7 @@
 
 ## **Features**
 
-[Example of Python logging](https://github.com/LHHegland/python_logging/blob/main/logs/), including the following:
+[Example of Python logging](https://github.com/LHHegland/python_logging/blob/main/src/logs/), including the following:
 - single reusable and easily importable module for logging
 - quick and easy to scan logging output
    - contextual color symbols for log scanning
@@ -85,10 +85,10 @@ None
 
 1. Review [README.md](#table-of-contents).
 1. Complete [installation](#installation).
-1. Review [sample log](https://github.com/LHHegland/python_logging/blob/main/src/logs/) and code in modules, especially [src\lib\log\__init__.py](https://github.com/LHHegland/python_logging/blob/main/src/lib/__init__.py), [src\main.py](https://github.com/LHHegland/python_logging/blob/main/src/main.py), and a few [src\lib\pkg_x\mdl_x.py](https://github.com/LHHegland/python_logging/tree/main/src/lib/pkg_b).
+1. Review [sample log](https://github.com/LHHegland/python_logging/blob/main/src/logs/) and code in modules, especially [src\lib\log\__init__.py](https://github.com/LHHegland/python_logging/blob/main/src/lib/log/__init__.py), [src\main.py](https://github.com/LHHegland/python_logging/blob/main/src/main.py), and a few [src\lib\pkg_x\mdl_x.py](https://github.com/LHHegland/python_logging/tree/main/src/lib/pkg_b).
 1. Experiment with src\lib\log
    1. Execute `py src\main.py`
-   1. Review `src\logs\test-[timestamp].log`
+   1. Review `src\logs\main-[timestamp].log`
 
 .
 
