@@ -39,12 +39,15 @@ Public API:
     ExceptionMessageFormatted: Structured message builder for warning/error/critical entries.
     fmt_val: Format a variable name and value for debug/info log messages.
 """
-import datetime
 import logging
+log = logging.getLogger().getChild(__name__)
+
+import datetime
 import os
+from pathlib import Path
 import shutil
 
-from lib.log._exec_info import _ExecInfo
+from lib.log._exec_info import ExecInfo
 from lib.log._messages import ExceptionMessageFormatted, fmt_val
 
 __all__ = ['Log', 'ExceptionMessageFormatted', 'fmt_val']
@@ -70,6 +73,7 @@ class _FileFormatter(logging.Formatter):
     )
 
     def format(self, record: logging.LogRecord) -> str:
+        """Select fyi or alert format template based on record severity, then delegate."""
         record.cntxt_flag = _CNTXT_FLAGS.get(record.levelname, '')
         return (self._fyi if record.levelno < logging.WARNING else self._alert).format(record)
 
@@ -92,35 +96,45 @@ class Log:
             log.info('Running...')
     """
 
-    def __init__(self, module_filepath: str) -> None:
-        self._exec_info = _ExecInfo(module_filepath)
-        logs_dir = os.path.join(self._exec_info.initial_dir, 'logs')
-        created = not os.path.exists(logs_dir)
-        os.makedirs(logs_dir, exist_ok=True)
+    def __init__(self, entry_file: str) -> None:
+        self._exec_info: ExecInfo = ExecInfo(Path(entry_file).resolve())
         self._log = logging.getLogger()
         self._log.setLevel(logging.DEBUG)
+
+        _filename: str = f'{Path(self._exec_info.entry_path).stem}-{self._exec_info.start.strftime("%Y%m%d%H%M%S")}.log'
+        self._path: Path = self._exec_info.project_path / 'logs' / _filename
+
+        created: bool = not self._path.parent.exists()
+        os.makedirs(self._path.parent, exist_ok=True)
+
         self._setup()
+
         self._log.info(self._header())
+
         if created:
             msg = ExceptionMessageFormatted(
                 title='LOGS DIRECTORY CREATED',
                 details=(
                     'Module uses logging and needs a log directory.\n'
-                    f'A directory for logs did not exist in {self._exec_info.initial_dir}.\n'
-                    f'Therefore, the logger created {logs_dir}.'
+                    f'A directory for logs did not exist in {self._exec_info.project_path}.\n'
+                    f'Therefore, the logger created {self._path.parent}.'
                 ),
             )
             self.warning(str(msg))
 
+
     def __enter__(self) -> 'Log':
+        """Return self so the session is optionally bound via ``as``."""
         return self
 
-    def __exit__(self, *args) -> None:
+    def __exit__(self, exc_type: object, exc_val: object, exc_tb: object) -> None:
+        """Call terminate() on block exit; exceptions are not suppressed."""
         self.terminate()
 
     def _setup(self) -> None:
+        """Attach file and stderr handlers to the root logger."""
         file_handler = logging.FileHandler(
-            self._exec_info.log_filepath, mode='a', encoding='utf-8'
+            self._path, mode='a', encoding='utf-8'
         )
         file_handler.setLevel(logging.DEBUG)
         file_handler.setFormatter(_FileFormatter())
@@ -136,70 +150,79 @@ class Log:
         ))
         self._log.addHandler(stderr_handler)
 
+
     def debug(self, message: str) -> None:
         """Log at DEBUG level (file only)."""
         self._log.debug(message)
+
 
     def info(self, message: str) -> None:
         """Log at INFO level (file only)."""
         self._log.info(message)
 
+
     def warning(self, message: str) -> None:
         """Log at WARNING level (file and stderr, with call-site context)."""
         self._log.warning(message)
+
 
     def error(self, message: str) -> None:
         """Log at ERROR level (file and stderr, with call-site context)."""
         self._log.error(message)
 
+
     def critical(self, message: str) -> None:
         """Log at CRITICAL level (file and stderr, with call-site context)."""
         self._log.critical(message)
+
 
     def exception(self, message: str) -> None:
         """Log at ERROR level with the current exception traceback (file and stderr)."""
         self._log.exception(message)
 
-    def terminate(self, dirpathname: str | None = None) -> None:
+
+    def terminate(self, log_dirpath: str | None = None) -> None:
         """Write session footer, close all handlers, and optionally copy the log file.
 
         Args:
-            dirpathname: Destination directory for a copy of the finished log.
-                If None, the log remains in the logs/ directory next to the script.
+            log_dirpath: Destination directory path for a copy of the finished log.
+                If None, the log remains in the logs/ project directory.
         """
         self._exec_info.end = datetime.datetime.now(datetime.UTC)
-        source_path = self._exec_info.log_filepath
-        self._exec_info.final_dir = dirpathname
-        self._log.info(self._footer())
+
+        self._log.info(self._footer(log_dirpath))
+
         for handler in self._log.handlers[:]:
             handler.flush()
             handler.close()
             self._log.removeHandler(handler)
-        if dirpathname is not None:
-            shutil.copy(source_path, dirpathname)
+
+        if log_dirpath is not None:
+            shutil.copy(self._path, Path(log_dirpath).resolve())
+
 
     def _header(self) -> str:
-        ei = self._exec_info
         return (
              'BEGIN LOGGING...\n'
-            f'START: {ei.start.isoformat()}\n'
-            f'USER: {ei.user}\n'
-            f'OPERATING SYSTEM: {ei.system}\n'
-            f'PYTHON VERSION: {ei.python_version}\n'
-            f'ROOT: {os.path.join(ei.initial_dir, ei.module_basename)}.py\n'
-            f'ARGUMENTS: {ei.arguments}\n'
-            f'LOG: {ei.log_filepath}\n'
+            f'START: {self._exec_info.start.isoformat()}\n'
+            f'USER: {self._exec_info.user}\n'
+            f'OPERATING SYSTEM: {self._exec_info.system}\n'
+            f'PYTHON VERSION: {self._exec_info.python_version}\n'
+            f'ENTRY: {self._exec_info.entry_path}\n'
+            f'ARGUMENTS: {self._exec_info.arguments}\n'
+            f'LOG: {self._path}\n'
              '========== STARTING =========='
         )
+    
 
-    def _footer(self) -> str:
-        ei = self._exec_info
-        footer = '========== ENDING ==========\n'
-        footer += 'Log copied to specified directory.\n' if ei.final_dir else '*** Final log directory not specified. ***\n'
-        footer += (
-            f'\nLOG: {ei.log_filepath}\n\n'
-            f'  END: {ei.end.isoformat()}\n'
-            f'- START: {ei.start.isoformat()}\n'
-            f'= ELAPSED: {ei.elapsed()}'
+    def _footer(self, log_dirpath: str | None) -> str:
+        content = '========== ENDING ==========\n'
+        content += f'Log copied to {log_dirpath}.\n' if log_dirpath else '*** Final log directory not specified. Default used. ***\n'
+        content += f'\nLOG: {Path(log_dirpath) / self._path.name}.\n' if log_dirpath else f'{self._path}\n'
+        content += (
+           f'\nEND: {self._exec_info.end.isoformat()}\n'
+           f'- START: {self._exec_info.start.isoformat()}\n'
+           f'= ELAPSED: {self._exec_info.elapsed()}'
         )
-        return footer
+
+        return content

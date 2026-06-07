@@ -1,8 +1,8 @@
 import logging
+log = logging.getLogger(__name__)
 
 from lib.log import Log, ExceptionMessageFormatted
 
-log = logging.getLogger(__name__)
 
 with Log(__file__):
     log.info('Loading '  + log.name + '.')
