@@ -39,18 +39,16 @@ Public API:
     ExceptionMessageFormatted: Structured message builder for warning/error/critical entries.
     fmt_val: Format a variable name and value for debug/info log messages.
 """
-import logging
-log = logging.getLogger().getChild(__name__)
 
 import datetime
-import os
+import logging
 from pathlib import Path
 import shutil
 
 from lib.log._exec_info import ExecInfo
 from lib.log._messages import ExceptionMessageFormatted, fmt_val
 
-__all__ = ['Log', 'ExceptionMessageFormatted', 'fmt_val']
+__all__ = ['Log', 'ExecInfo', 'ExceptionMessageFormatted', 'fmt_val']
 
 _DATEFMT = '%Y-%m-%d %H:%M:%S %z'
 _CNTXT_FLAGS = {
@@ -81,11 +79,10 @@ class _FileFormatter(logging.Formatter):
 class Log:
     """Session manager that configures the root logger for a script's execution.
 
-    Creates a timestamped log file under a logs/ directory next to the calling
-    script and attaches file and stderr handlers to the root logger. All
-    application loggers obtained via ``logging.getLogger(__name__)`` propagate
-    to these handlers automatically. Use as a context manager to ensure
-    terminate() is always called:
+    Creates a timestamped log file under a logs/ directory and attaches file and
+    stderr handlers to the root logger. All application loggers obtained via
+    ``logging.getLogger(__name__)`` propagate to these handlers automatically.
+    Use as a context manager to ensure terminate() is always called:
 
         import logging
         from lib.log import Log
@@ -101,11 +98,11 @@ class Log:
         self._log = logging.getLogger()
         self._log.setLevel(logging.DEBUG)
 
-        _filename: str = f'{Path(self._exec_info.entry_path).stem}-{self._exec_info.start.strftime("%Y%m%d%H%M%S")}.log'
+        _filename: str = f'{self._exec_info.entry_path.stem}-{self._exec_info.start.strftime("%Y%m%d%H%M%S")}.log'
         self._path: Path = self._exec_info.project_path / 'logs' / _filename
 
         created: bool = not self._path.parent.exists()
-        os.makedirs(self._path.parent, exist_ok=True)
+        self._path.parent.mkdir(parents=True, exist_ok=True)
 
         self._setup()
 
@@ -188,6 +185,9 @@ class Log:
             log_dirpath: Destination directory path for a copy of the finished log.
                 If None, the log remains in the logs/ project directory.
         """
+        if not self._log.handlers:
+            return
+
         self._exec_info.end = datetime.datetime.now(datetime.UTC)
 
         self._log.info(self._footer(log_dirpath))
@@ -213,16 +213,17 @@ class Log:
             f'LOG: {self._path}\n'
              '========== STARTING =========='
         )
-    
+
 
     def _footer(self, log_dirpath: str | None) -> str:
         content = '========== ENDING ==========\n'
         content += f'Log copied to {log_dirpath}.\n' if log_dirpath else '*** Final log directory not specified. Default used. ***\n'
-        content += f'\nLOG: {Path(log_dirpath) / self._path.name}.\n' if log_dirpath else f'{self._path}\n'
+        content += f'\nLOG: {Path(log_dirpath) / self._path.name}\n' if log_dirpath else f'{self._path}\n'
         content += (
-           f'\nEND: {self._exec_info.end.isoformat()}\n'
+           f'\n  END: {self._exec_info.end.isoformat()}\n'
            f'- START: {self._exec_info.start.isoformat()}\n'
            f'= ELAPSED: {self._exec_info.elapsed()}'
         )
 
         return content
+

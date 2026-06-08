@@ -1,0 +1,158 @@
+
+⬛ BEGIN LOGGING...
+START: 2026-06-08T03:32:15.942502+00:00
+USER: lance
+OPERATING SYSTEM: uname_result(system='Windows', node='CI-LHH-Desk-01', release='11', version='10.0.26200', machine='AMD64')
+PYTHON VERSION: 3.13.13
+ENTRY: C:\Data\Lance\Projects\Development\python_logging\src\main.py
+ARGUMENTS: []
+LOG: C:\Data\Lance\Projects\Development\python_logging\logs\main-20260608033215.log
+========== STARTING ========== 
+2026-06-07 22:32:15 -0500 - root - INFO 
+
+
+⬛ Loading __main__. 
+2026-06-07 22:32:15 -0500 - __main__ - INFO 
+
+
+⬛ Loading mdl_a. 
+2026-06-07 22:32:15 -0500 - mdl_a - INFO 
+
+
+⬛ Loading mdl_b. 
+2026-06-07 22:32:15 -0500 - mdl_b - INFO 
+
+
+⬛ Loading mdl_z. 
+2026-06-07 22:32:15 -0500 - mdl_z - INFO 
+
+
+⬛ Loading lib.pkg_a.mdl_a. 
+2026-06-07 22:32:15 -0500 - lib.pkg_a.mdl_a - INFO 
+
+
+⬛ Loading lib.pkg_a.mdl_b. 
+2026-06-07 22:32:15 -0500 - lib.pkg_a.mdl_b - INFO 
+
+
+⬛ Loading lib.pkg_a.mdl_z. 
+2026-06-07 22:32:15 -0500 - lib.pkg_a.mdl_z - INFO 
+
+
+⬛ Loading lib.pkg_b.mdl_a. 
+2026-06-07 22:32:15 -0500 - lib.pkg_b.mdl_a - INFO 
+
+
+⬛ Loading lib.pkg_b.mdl_b. 
+2026-06-07 22:32:15 -0500 - lib.pkg_b.mdl_b - INFO 
+
+
+⬛ Loading lib.pkg_b.mdl_z. 
+2026-06-07 22:32:15 -0500 - lib.pkg_b.mdl_z - INFO 
+
+
+⬛ Loading lib.pkg_z.mdl_a. 
+2026-06-07 22:32:15 -0500 - lib.pkg_z.mdl_a - INFO 
+
+
+⬛ Loading lib.pkg_z.mdl_b. 
+2026-06-07 22:32:15 -0500 - lib.pkg_z.mdl_b - INFO 
+
+
+⬛ Loading lib.pkg_z.mdl_z. 
+2026-06-07 22:32:15 -0500 - lib.pkg_z.mdl_z - INFO 
+
+
+⬛ Trying Actions… 
+2026-06-07 22:32:15 -0500 - __main__ - INFO 
+
+
+⬛ Message 
+2026-06-07 22:32:15 -0500 - __main__ - INFO 
+
+
+⚪ Message. 
+2026-06-07 22:32:15 -0500 - __main__ - DEBUG 
+
+
+🟧 Message. 
+2026-06-07 22:32:15 -0500 - __main__ - WARNING 
+MainThread → MainProcess 
+C:\Data\Lance\Projects\Development\python_logging\src\main.py 
+→ main → <module> @ 32 
+EXCEPTION INFO: None 
+
+
+🟥 Message. 
+2026-06-07 22:32:15 -0500 - __main__ - ERROR 
+MainThread → MainProcess 
+C:\Data\Lance\Projects\Development\python_logging\src\main.py 
+→ main → <module> @ 33 
+EXCEPTION INFO: None 
+
+
+🟥🟥 Message. 
+2026-06-07 22:32:15 -0500 - __main__ - CRITICAL 
+MainThread → MainProcess 
+C:\Data\Lance\Projects\Development\python_logging\src\main.py 
+→ main → <module> @ 34 
+EXCEPTION INFO: None 
+
+
+🟥 Specified Exception Message. 
+2026-06-07 22:32:15 -0500 - __main__ - ERROR 
+MainThread → MainProcess 
+C:\Data\Lance\Projects\Development\python_logging\src\main.py 
+→ main → <module> @ 35 
+EXCEPTION INFO: (None, None, None) 
+NoneType: None
+
+🟥 🟥 Unspecified Exception Message. 
+2026-06-07 22:32:15 -0500 - __main__ - ERROR 
+MainThread → MainProcess 
+C:\Data\Lance\Projects\Development\python_logging\src\main.py 
+→ main → <module> @ 36 
+EXCEPTION INFO: (None, None, None) 
+NoneType: None
+
+⬛ Hi! I'm lib.pkg_z.mdl_z.var_z! I'm in lib.pkg_z.mdl_a.fnctn_b! 
+2026-06-07 22:32:15 -0500 - lib.pkg_z.mdl_a - INFO 
+
+
+⬛ Hi! I'm lib.pkg_b.mdl_a.var_b! I'm in lib.pkg_a.mdl_z.fnctn_a! 
+2026-06-07 22:32:15 -0500 - lib.pkg_a.mdl_z - INFO 
+
+
+⬛ Hi! I'm lib.pkg_z.mdl_z.var_z! I'm in lib.pkg_b.mdl_a.fnctn_z! 
+2026-06-07 22:32:15 -0500 - lib.pkg_b.mdl_a - INFO 
+
+
+⬛ Hi! I'm mdl_z.var_z! I'm in lib.pkg_a.mdl_z.fnctn_a! 
+2026-06-07 22:32:15 -0500 - lib.pkg_a.mdl_z - INFO 
+
+
+⬛ Hi! I'm lib.pkg_z.mdl_a.var_a! I'm in lib.pkg_a.mdl_b.fnctn_a! 
+2026-06-07 22:32:15 -0500 - lib.pkg_a.mdl_b - INFO 
+
+
+⬛ Hi! I'm mdl_a.var_b! I'm in mdl_z.fnctn_b! 
+2026-06-07 22:32:15 -0500 - mdl_z - INFO 
+
+
+⬛ Hi! I'm lib.pkg_a.mdl_b.var_b! I'm in mdl_z.fnctn_z! 
+2026-06-07 22:32:15 -0500 - mdl_z - INFO 
+
+
+⬛ 🟩 …Completed Actions. 
+2026-06-07 22:32:15 -0500 - __main__ - INFO 
+
+
+⬛ ========== ENDING ==========
+*** Final log directory not specified. Default used. ***
+C:\Data\Lance\Projects\Development\python_logging\logs\main-20260608033215.log
+
+  END: 2026-06-08T03:32:15.953038+00:00
+- START: 2026-06-08T03:32:15.942502+00:00
+= ELAPSED: 0m 0s 10ms 536μs 
+2026-06-07 22:32:15 -0500 - root - INFO 
+

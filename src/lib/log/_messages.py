@@ -1,6 +1,4 @@
 """Formatted message helpers for log entries."""
-import logging
-log = logging.getLogger().getChild(__name__)
 
 import pprint
 from dataclasses import dataclass
